@@ -1,5 +1,5 @@
 //
-//  StackGameViewController.swift
+//  StackScene.swift
 //  Jeff Game Demos
 //
 //  Created by Jeff Cole on 2/15/16.
@@ -9,11 +9,7 @@
 import UIKit
 import SpriteKit
 
-class StackGameViewController: UIViewController {
-
-  // spritekit
-  var sceneView:SKView!
-  var scene:SKScene!
+class StackScene: SKScene {
 
   // entities
   var selectedEntity:SKNode?
@@ -21,29 +17,24 @@ class StackGameViewController: UIViewController {
   // bitmasks
   let draggableCategory:UInt32 = 0x1 << 1
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  // MARK: Lifecycle
 
+  override init(size: CGSize) {
+    super.init(size: size)
     setup()
   }
 
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   func setup() {
-    sceneView = SKView(frame: self.view.frame)
-    sceneView.showsFPS = true
-    sceneView.showsPhysics = true
-    self.view.addSubview(sceneView)
-
-    scene = SKScene(size: self.view.frame.size)
-    scene.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
-    scene.physicsBody = SKPhysicsBody(edgeLoopFromRect: scene.frame)
-    sceneView.presentScene(scene)
-
     let images = ["circle", "letter-l", "square", "box"]
     for (index, image) in images.enumerate() {
       let sprite = createPhysicsSprite(image)
       let offset = CGFloat(index + 1) * 0.2
-      sprite.position = CGPoint(x: scene.size.width * offset, y: scene.size.height * offset)
-      scene.addChild(sprite)
+      sprite.position = CGPoint(x: self.size.width * offset, y: self.size.height * offset)
+      self.addChild(sprite)
     }
   }
 
@@ -67,13 +58,13 @@ class StackGameViewController: UIViewController {
 
   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
     if let touch = touches.first {
-      let positionInScene = touch.locationInNode(scene)
+      let positionInScene = touch.locationInNode(self)
 
       var touchedNode:SKNode!
       if selectedEntity != nil {
         touchedNode = selectedEntity
       } else {
-        touchedNode = scene.nodeAtPoint(positionInScene)
+        touchedNode = self.nodeAtPoint(positionInScene)
       }
 
       if let category = touchedNode.physicsBody?.categoryBitMask {
