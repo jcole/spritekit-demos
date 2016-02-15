@@ -16,10 +16,14 @@ class SwingScene: SKScene {
   var anchorNode:SKNode?
   var joint:SKPhysicsJointLimit?
 
-  // bitmasks
-  let collideableCategory:UInt32 = 0x1 << 1
+  // constants
+  let jointMinLength:CGFloat = 50.0
 
-  // MARK: Lifecycle
+  // bitmasks
+  let movingCategory:UInt32 = 0x1 << 1
+  let staticCategory:UInt32 = 0x1 << 2
+
+  // MARK: Init
 
   override init(size: CGSize) {
     super.init(size: size)
@@ -39,10 +43,18 @@ class SwingScene: SKScene {
     movingNode.position = CGPoint(x: 200, y: 40)
     movingNode.physicsBody = SKPhysicsBody(circleOfRadius: 40.0)
     movingNode.physicsBody?.dynamic = true
-    movingNode.physicsBody!.categoryBitMask = collideableCategory
-    movingNode.physicsBody!.collisionBitMask = collideableCategory
-    movingNode.physicsBody!.contactTestBitMask = collideableCategory
+    movingNode.physicsBody!.categoryBitMask = movingCategory
+    movingNode.physicsBody!.collisionBitMask = staticCategory
+    movingNode.physicsBody!.contactTestBitMask = staticCategory
     self.addChild(movingNode)
+  }
+
+  // MARK: Lifecycle
+
+  override func didSimulatePhysics() {
+    super.didSimulatePhysics()
+
+    updateJointLength()
   }
 
   // MARK: Drawing methods
@@ -56,9 +68,9 @@ class SwingScene: SKScene {
     shape.physicsBody = SKPhysicsBody(rectangleOfSize: size)
     shape.physicsBody?.dynamic = false
 
-    shape.physicsBody!.categoryBitMask = collideableCategory
-    shape.physicsBody!.collisionBitMask = collideableCategory
-    shape.physicsBody!.contactTestBitMask = collideableCategory
+    shape.physicsBody!.categoryBitMask = staticCategory
+    shape.physicsBody!.collisionBitMask = movingCategory
+    shape.physicsBody!.contactTestBitMask = movingCategory
 
     return shape
   }
@@ -67,17 +79,35 @@ class SwingScene: SKScene {
     return nodeA.position.distance(nodeB.position)
   }
 
+  func updateJointLength() {
+    if joint != nil && anchorNode != nil {
+      if joint!.maxLength > jointMinLength {
+        self.physicsWorld.removeJoint(joint!)
+
+        joint = SKPhysicsJointLimit.jointWithBodyA(anchorNode!.physicsBody!, bodyB: movingNode.physicsBody!,
+          anchorA: anchorNode!.position, anchorB: movingNode.position)
+        let newMaxLength = joint!.maxLength * 0.99
+        joint?.maxLength = newMaxLength
+        self.physicsWorld.addJoint(joint!)
+      }
+    }
+  }
+
+  // MARK: Touches
+
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     if let touch = touches.first {
       let positionInScene = touch.locationInNode(self)
       let touchedNode = self.nodeAtPoint(positionInScene)
 
       if let anchorNodeBody = touchedNode.physicsBody {
-        anchorNode = touchedNode
-        joint = SKPhysicsJointLimit.jointWithBodyA(anchorNodeBody, bodyB: movingNode.physicsBody!,
-          anchorA: anchorNode!.position, anchorB: movingNode.position)
-        joint?.maxLength = maxJointLength(anchorNode!, nodeB:movingNode)
-        self.physicsWorld.addJoint(joint!)
+        if anchorNodeBody.categoryBitMask == staticCategory {
+          anchorNode = touchedNode
+          joint = SKPhysicsJointLimit.jointWithBodyA(anchorNodeBody, bodyB: movingNode.physicsBody!,
+            anchorA: anchorNode!.position, anchorB: movingNode.position)
+          joint?.maxLength = maxJointLength(anchorNode!, nodeB:movingNode)
+          self.physicsWorld.addJoint(joint!)
+        }
       }
     }
   }
@@ -85,6 +115,8 @@ class SwingScene: SKScene {
   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     if joint != nil {
       self.physicsWorld.removeJoint(joint!)
+      joint = nil
+      anchorNode = nil
     }
   }
 
