@@ -16,7 +16,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   let demos:[String] = [
     "3D Marbles",
     "Stack Game",
-    "Swing"
+    "Swing",
+    "Paper Airplane"
   ]
 
   func spriteKitSceneForDemo(demoName:String) -> SKScene? {
@@ -25,6 +26,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
       return SwingScene(size: self.view.frame.size)
     case "Stack Game":
       return StackScene(size: self.view.frame.size)
+    case "Paper Airplane":
+      return PaperAirplaneScene(size: self.view.frame.size)
     default:
       return nil
     }

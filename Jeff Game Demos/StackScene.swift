@@ -29,6 +29,9 @@ class StackScene: SKScene {
   }
 
   func setup() {
+    self.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
+    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+
     let images = ["circle", "letter-l", "square", "box"]
     for (index, image) in images.enumerate() {
       let sprite = createPhysicsSprite(image)

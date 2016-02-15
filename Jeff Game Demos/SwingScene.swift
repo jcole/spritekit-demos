@@ -35,6 +35,9 @@ class SwingScene: SKScene {
   }
 
   func setup() {
+    self.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
+    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+
     self.addChild(createBoxSprite(CGSize(width: 100, height: 20), position:CGPoint(x:100, y:200)))
     self.addChild(createBoxSprite(CGSize(width: 30, height: 40), position:CGPoint(x:220, y:200)))
     self.addChild(createBoxSprite(CGSize(width: 200, height: 10), position:CGPoint(x:300, y:300)))

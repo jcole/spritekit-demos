@@ -28,11 +28,10 @@ class SpriteKitSceneViewController: UIViewController {
     let sceneView = SKView(frame: self.view.frame)
     sceneView.showsFPS = true
     sceneView.showsPhysics = true
+    sceneView.showsFields = true
     self.view.addSubview(sceneView)
 
     scene.size = self.view.frame.size
-    scene.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
-    scene.physicsBody = SKPhysicsBody(edgeLoopFromRect: scene.frame)
     sceneView.presentScene(scene)
   }
 }

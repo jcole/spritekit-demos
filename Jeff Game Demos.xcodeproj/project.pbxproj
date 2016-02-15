@@ -10,6 +10,7 @@
 		C14F57C11C72667500EB26E2 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C01C72667500EB26E2 /* CGPointExtension.swift */; };
 		C14F57C31C72681A00EB26E2 /* SwingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C21C72681A00EB26E2 /* SwingScene.swift */; };
 		C14F57C51C726E6200EB26E2 /* StackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C41C726E6200EB26E2 /* StackScene.swift */; };
+		C1C749B71C72761A007E6108 /* PaperAirplaneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */; };
 		C1F1972E1C7256FC00486DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1972D1C7256FC00486DCD /* AppDelegate.swift */; };
 		C1F197301C7256FC00486DCD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1972F1C7256FC00486DCD /* ListViewController.swift */; };
 		C1F197331C7256FC00486DCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F197311C7256FC00486DCD /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		C14F57C01C72667500EB26E2 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		C14F57C21C72681A00EB26E2 /* SwingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwingScene.swift; sourceTree = "<group>"; };
 		C14F57C41C726E6200EB26E2 /* StackScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackScene.swift; sourceTree = "<group>"; };
+		C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperAirplaneScene.swift; sourceTree = "<group>"; };
 		C1F1972A1C7256FC00486DCD /* Jeff Game Demos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jeff Game Demos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F1972D1C7256FC00486DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F1972F1C7256FC00486DCD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		C14F57C71C726F8800EB26E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1F1972D1C7256FC00486DCD /* AppDelegate.swift */,
 				C1F197391C7256FC00486DCD /* Info.plist */,
 				C1F197361C7256FC00486DCD /* LaunchScreen.storyboard */,
 				C1F197311C7256FC00486DCD /* Main.storyboard */,
@@ -99,9 +102,8 @@
 		C1F1972C1C7256FC00486DCD /* Jeff Game Demos */ = {
 			isa = PBXGroup;
 			children = (
-				C1F1972D1C7256FC00486DCD /* AppDelegate.swift */,
-				C14F57C61C726F7600EB26E2 /* Controllers */,
 				C1F1973F1C725DF500486DCD /* Demos */,
+				C14F57C61C726F7600EB26E2 /* Controllers */,
 				C1F197421C725F6000486DCD /* Util */,
 				C1F197481C72607D00486DCD /* Images */,
 				C14F57C71C726F8800EB26E2 /* Resources */,
@@ -112,6 +114,7 @@
 		C1F1973F1C725DF500486DCD /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */,
 				C14F57C41C726E6200EB26E2 /* StackScene.swift */,
 				C14F57C21C72681A00EB26E2 /* SwingScene.swift */,
 				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
@@ -229,6 +232,7 @@
 				C1F1972E1C7256FC00486DCD /* AppDelegate.swift in Sources */,
 				C14F57C51C726E6200EB26E2 /* StackScene.swift in Sources */,
 				C1F197441C725F7200486DCD /* SCNVector3Extensions.swift in Sources */,
+				C1C749B71C72761A007E6108 /* PaperAirplaneScene.swift in Sources */,
 				C14F57C11C72667500EB26E2 /* CGPointExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
