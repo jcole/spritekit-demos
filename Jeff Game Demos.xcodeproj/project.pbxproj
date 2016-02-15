@@ -12,6 +12,17 @@
 		C1F197331C7256FC00486DCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F197311C7256FC00486DCD /* Main.storyboard */; };
 		C1F197351C7256FC00486DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F197341C7256FC00486DCD /* Assets.xcassets */; };
 		C1F197381C7256FC00486DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F197361C7256FC00486DCD /* LaunchScreen.storyboard */; };
+		C1F197411C725E0E00486DCD /* ThreeDMarblesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */; };
+		C1F197441C725F7200486DCD /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F197431C725F7200486DCD /* SCNVector3Extensions.swift */; };
+		C1F197461C725FDA00486DCD /* StackGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F197451C725FDA00486DCD /* StackGameViewController.swift */; };
+		C1F197501C7260A100486DCD /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F197491C7260A100486DCD /* banana.png */; };
+		C1F197511C7260A100486DCD /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974A1C7260A100486DCD /* box.png */; };
+		C1F197521C7260A100486DCD /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974B1C7260A100486DCD /* circle.png */; };
+		C1F197531C7260A100486DCD /* letter-l.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974C1C7260A100486DCD /* letter-l.png */; };
+		C1F197541C7260A100486DCD /* sand.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974D1C7260A100486DCD /* sand.png */; };
+		C1F197551C7260A100486DCD /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974E1C7260A100486DCD /* square.png */; };
+		C1F197561C7260A100486DCD /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F1974F1C7260A100486DCD /* triangle.png */; };
+		C1F197581C7260FF00486DCD /* SwingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F197571C7260FE00486DCD /* SwingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +33,17 @@
 		C1F197341C7256FC00486DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1F197371C7256FC00486DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1F197391C7256FC00486DCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDMarblesViewController.swift; sourceTree = "<group>"; };
+		C1F197431C725F7200486DCD /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
+		C1F197451C725FDA00486DCD /* StackGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackGameViewController.swift; sourceTree = "<group>"; };
+		C1F197491C7260A100486DCD /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		C1F1974A1C7260A100486DCD /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
+		C1F1974B1C7260A100486DCD /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		C1F1974C1C7260A100486DCD /* letter-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "letter-l.png"; sourceTree = "<group>"; };
+		C1F1974D1C7260A100486DCD /* sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sand.png; sourceTree = "<group>"; };
+		C1F1974E1C7260A100486DCD /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		C1F1974F1C7260A100486DCD /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
+		C1F197571C7260FE00486DCD /* SwingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +78,47 @@
 			children = (
 				C1F1972D1C7256FC00486DCD /* AppDelegate.swift */,
 				C1F1972F1C7256FC00486DCD /* ViewController.swift */,
+				C1F1973F1C725DF500486DCD /* Demos */,
+				C1F197421C725F6000486DCD /* Util */,
+				C1F197481C72607D00486DCD /* images */,
 				C1F197311C7256FC00486DCD /* Main.storyboard */,
 				C1F197341C7256FC00486DCD /* Assets.xcassets */,
 				C1F197361C7256FC00486DCD /* LaunchScreen.storyboard */,
 				C1F197391C7256FC00486DCD /* Info.plist */,
 			);
 			path = "Jeff Game Demos";
+			sourceTree = "<group>";
+		};
+		C1F1973F1C725DF500486DCD /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
+				C1F197451C725FDA00486DCD /* StackGameViewController.swift */,
+				C1F197571C7260FE00486DCD /* SwingViewController.swift */,
+			);
+			name = Demos;
+			sourceTree = "<group>";
+		};
+		C1F197421C725F6000486DCD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C1F197431C725F7200486DCD /* SCNVector3Extensions.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		C1F197481C72607D00486DCD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C1F197491C7260A100486DCD /* banana.png */,
+				C1F1974A1C7260A100486DCD /* box.png */,
+				C1F1974B1C7260A100486DCD /* circle.png */,
+				C1F1974C1C7260A100486DCD /* letter-l.png */,
+				C1F1974D1C7260A100486DCD /* sand.png */,
+				C1F1974E1C7260A100486DCD /* square.png */,
+				C1F1974F1C7260A100486DCD /* triangle.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +180,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F197381C7256FC00486DCD /* LaunchScreen.storyboard in Resources */,
+				C1F197561C7260A100486DCD /* triangle.png in Resources */,
+				C1F197551C7260A100486DCD /* square.png in Resources */,
+				C1F197541C7260A100486DCD /* sand.png in Resources */,
 				C1F197351C7256FC00486DCD /* Assets.xcassets in Resources */,
+				C1F197511C7260A100486DCD /* box.png in Resources */,
+				C1F197521C7260A100486DCD /* circle.png in Resources */,
+				C1F197531C7260A100486DCD /* letter-l.png in Resources */,
+				C1F197501C7260A100486DCD /* banana.png in Resources */,
 				C1F197331C7256FC00486DCD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F197301C7256FC00486DCD /* ViewController.swift in Sources */,
+				C1F197581C7260FF00486DCD /* SwingViewController.swift in Sources */,
+				C1F197461C725FDA00486DCD /* StackGameViewController.swift in Sources */,
+				C1F197411C725E0E00486DCD /* ThreeDMarblesViewController.swift in Sources */,
 				C1F1972E1C7256FC00486DCD /* AppDelegate.swift in Sources */,
+				C1F197441C725F7200486DCD /* SCNVector3Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +354,7 @@
 				C1F1973E1C7256FC00486DCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
