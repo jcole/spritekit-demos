@@ -11,17 +11,9 @@ import SpriteKit
 
 class PaperAirplaneScene: SKScene {
 
-  // entities
-  var fieldNode:SKFieldNode?
-  var labelNode = SKLabelNode()
-
-  // state
-  let numFieldTypes = 10
-  var currentFieldType:Int?
-
   // bitmasks
   let conformsToFieldMask:UInt32 = 0x1 << 1
-  let ballMask:UInt32 = 0x1 << 2
+  let airplaneMask:UInt32 = 0x1 << 2
 
   // MARK: Lifecycle
 
@@ -38,140 +30,70 @@ class PaperAirplaneScene: SKScene {
     self.physicsWorld.gravity = CGVectorMake(0, 0)
 
     // we put contraints on the top, left, right, bottom so that our balls can bounce off them
-    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(-100, -100, 10000, 10000)) //arbitrarily wide
+    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
 
-    labelNode.position = CGPoint(x: self.frame.size.width / 2.0, y: 50)
-    labelNode.fontColor = UIColor.cyanColor()
-    labelNode.fontSize = 15.0
-    self.addChild(labelNode)
-  }
-
-  var lastTime:Int64? //ms
-
-  override func didEvaluateActions() {
-    let now = Int64(NSDate().timeIntervalSince1970 * 1000)
-    if lastTime != nil && (now - lastTime! < 100) {
-      return
-    }
-    lastTime = now
-
-    addCircle()
-  }
-
-  // MARK: Gestures
-
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    // we grab the UITouch object in the current scene (self) coordinate
-    if let touch = touches.first {
-      let positionInScene = touch.locationInNode(self)
-
-      // we apply the position of the touch to the physics field node
-      switchFieldNode(positionInScene)
-    }
-  }
-
-  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    labelNode.text = nil
-    removeFieldNode()
-  }
-
-  // MARK: Add entities
-
-  func addCircle() {
-    let radius:CGFloat = 2.0
-
-    let shape = SKShapeNode(circleOfRadius: radius)
-    shape.strokeColor = UIColor.redColor()
-    shape.lineWidth = 1
-    shape.fillColor = UIColor.yellowColor()
-    let x:CGFloat = 0
-    let y:CGFloat = CGFloat(arc4random()%UInt32(self.frame.size.height))
-    shape.position = CGPoint(x:x, y:y)
-    self.addChild(shape)
-
-    shape.physicsBody = SKPhysicsBody(circleOfRadius: radius)
-    shape.physicsBody?.dynamic = true
-    shape.physicsBody!.mass = 1.0
-    shape.physicsBody!.charge = 1.0
-    shape.physicsBody!.categoryBitMask = ballMask
-    shape.physicsBody!.collisionBitMask = ballMask
-    shape.physicsBody!.fieldBitMask = conformsToFieldMask
-    shape.physicsBody!.allowsRotation = true
-    shape.physicsBody!.friction = 0.0
-    shape.physicsBody!.restitution = 1.0
-    shape.physicsBody!.velocity = CGVector(dx: 40.0, dy: 0.0)
-  }
-
-  func removeFieldNode() {
-    if fieldNode != nil {
-      fieldNode!.removeFromParent()
-      fieldNode = nil
-      return
-    }
-  }
-
-  func switchFieldNode(position:CGPoint) {
-    if currentFieldType == nil {
-      currentFieldType = 0
+    // airplane
+    var airplanePath:CGPath {
+      let bezierPath = UIBezierPath()
+      bezierPath.moveToPoint(CGPointMake(0.0, 0.0))
+      bezierPath.addLineToPoint(CGPointMake(30.0, 0.0))
+      bezierPath.addLineToPoint(CGPointMake(15.0, 40.0))
+      bezierPath.addLineToPoint(CGPointMake(0.0, 0.0))
+      bezierPath.closePath()
+      return bezierPath.CGPath
     }
 
-    currentFieldType! += 1
-    if currentFieldType! == numFieldTypes {
-      currentFieldType = 0
-    }
+    let airplaneShape = SKShapeNode(path: airplanePath)
+    airplaneShape.strokeColor = UIColor.whiteColor()
+    airplaneShape.fillColor = UIColor.redColor()
+    airplaneShape.lineWidth = 1
+    airplaneShape.position = CGPoint(x:self.frame.size.width/2.0, y:10.0)
+    self.addChild(airplaneShape)
 
-    var node:SKFieldNode!
-    var text:String!
+    airplaneShape.physicsBody = SKPhysicsBody(polygonFromPath: airplanePath)
+    airplaneShape.physicsBody?.dynamic = true
+    airplaneShape.physicsBody!.mass = 1.0
+    airplaneShape.physicsBody!.charge = 1.0
+    airplaneShape.physicsBody!.categoryBitMask = airplaneMask
+    airplaneShape.physicsBody!.collisionBitMask = airplaneMask
+    airplaneShape.physicsBody!.fieldBitMask = conformsToFieldMask
+    airplaneShape.physicsBody!.allowsRotation = true
+    airplaneShape.physicsBody!.friction = 0.0
+    airplaneShape.physicsBody!.restitution = 1.0
+    airplaneShape.physicsBody!.velocity = CGVector(dx: 0.0, dy: 50.0)
 
-    switch currentFieldType! {
-    case 0:
-      text = "SKFieldNode.magneticField()"
-      node = SKFieldNode.magneticField()
-      node.physicsBody = SKPhysicsBody(circleOfRadius: 80)
-    case 1:
-      text = "SKFieldNode.electricField()"
-      node = SKFieldNode.electricField()
-      node.physicsBody = SKPhysicsBody(circleOfRadius: 80)
-      node.physicsBody!.charge = 0.000001
-      node.falloff = 2.0
-    case 2:
-      text = "SKFieldNode.linearGravityFieldWithVector()"
-      node = SKFieldNode.linearGravityFieldWithVector(vector3(0.0, -9.8, 0.0))
-      node.physicsBody = SKPhysicsBody(circleOfRadius: 80)
-      node.falloff = 2.0
-    case 3:
-      text = "SKFieldNode.dragField()"
-      node = SKFieldNode.dragField()
-    case 4:
-      text = "SKFieldNode.noiseFieldWithSmoothness()"
-      node = SKFieldNode.noiseFieldWithSmoothness(0.5, animationSpeed: 1.0)
-    case 5:
-      text = "SKFieldNode.radialGravityField()"
-      node = SKFieldNode.radialGravityField()
-    case 6:
-      text = "SKFieldNode.springField()"
-      node = SKFieldNode.springField()
-    case 7:
-      text = "SKFieldNode.turbulenceFieldWithSmoothness()"
-      node = SKFieldNode.turbulenceFieldWithSmoothness(0.5, animationSpeed: 1.0)
-    case 8:
-      text = "SKFieldNode.velocityFieldWithVector()"
-      node = SKFieldNode.velocityFieldWithVector(vector3(0.0, 1.0, 0.0))
-    case 9:
-      text = "SKFieldNode.vortexField()"
-      node = SKFieldNode.vortexField()
-    default:
-      print("Should not get here")
-    }
+    // repelling node
+    let repellingNodePosition = CGPoint(x: self.frame.size.width - 100.0, y: 150)
+    let repellingIconRadius:CGFloat = 10.0
 
-    labelNode.text = text
+    let repellingNode = SKFieldNode.radialGravityField()
+    repellingNode.falloff = 2.0
+    repellingNode.strength = -0.1
+    repellingNode.position = repellingNodePosition
+    self.addChild(repellingNode)
 
-    node.strength = 1.0
-    node.physicsBody?.fieldBitMask = conformsToFieldMask
+    let repellingShape = SKShapeNode(circleOfRadius: repellingIconRadius)
+    repellingShape.strokeColor = UIColor.yellowColor()
+    repellingShape.fillColor = UIColor.greenColor()
+    repellingShape.lineWidth = 1
+    repellingShape.position = repellingNodePosition
+    self.addChild(repellingShape)
 
-    fieldNode = node
-    fieldNode!.position = position
-    self.addChild(fieldNode!)
+    // attracting node
+    let gravityNodePosition = CGPoint(x:self.frame.size.width - 50.0, y:self.frame.size.height - 100)
+    let gravityIconRadius:CGFloat = 10.0
+
+    let gravityNode = SKFieldNode.radialGravityField()
+    gravityNode.strength = 0.5
+    gravityNode.position = gravityNodePosition
+    self.addChild(gravityNode)
+
+    let gravityShape = SKShapeNode(circleOfRadius: gravityIconRadius)
+    gravityShape.strokeColor = UIColor.whiteColor()
+    gravityShape.fillColor = UIColor.cyanColor()
+    gravityShape.lineWidth = 1
+    gravityShape.position = gravityNodePosition
+    self.addChild(gravityShape)
   }
 
 }

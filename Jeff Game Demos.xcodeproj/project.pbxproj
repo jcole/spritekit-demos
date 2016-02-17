@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C14669461C74D75700A145AD /* TrafficScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14669451C74D75700A145AD /* TrafficScene.swift */; };
+		C146694C1C74DA1F00A145AD /* CarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146694B1C74DA1F00A145AD /* CarEntity.swift */; };
+		C146A3711C74B5DE007EB0B6 /* FieldsDemoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */; };
 		C14F57C11C72667500EB26E2 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C01C72667500EB26E2 /* CGPointExtension.swift */; };
 		C14F57C31C72681A00EB26E2 /* SwingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C21C72681A00EB26E2 /* SwingScene.swift */; };
 		C14F57C51C726E6200EB26E2 /* StackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F57C41C726E6200EB26E2 /* StackScene.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C14669451C74D75700A145AD /* TrafficScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficScene.swift; sourceTree = "<group>"; };
+		C146694B1C74DA1F00A145AD /* CarEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarEntity.swift; sourceTree = "<group>"; };
+		C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsDemoScene.swift; sourceTree = "<group>"; };
 		C14F57C01C72667500EB26E2 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		C14F57C21C72681A00EB26E2 /* SwingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwingScene.swift; sourceTree = "<group>"; };
 		C14F57C41C726E6200EB26E2 /* StackScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackScene.swift; sourceTree = "<group>"; };
@@ -63,6 +69,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C14669441C74D73F00A145AD /* TrafficSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				C146694A1C74D9EE00A145AD /* Scenes */,
+				C14669491C74D9DC00A145AD /* Components */,
+				C14669481C74D9D700A145AD /* Entities */,
+				C14669471C74D9CF00A145AD /* Behaviors */,
+			);
+			name = TrafficSimulator;
+			sourceTree = "<group>";
+		};
+		C14669471C74D9CF00A145AD /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Behaviors;
+			sourceTree = "<group>";
+		};
+		C14669481C74D9D700A145AD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		C14669491C74D9DC00A145AD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C146694B1C74DA1F00A145AD /* CarEntity.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		C146694A1C74D9EE00A145AD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C14669451C74D75700A145AD /* TrafficScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
 		C14F57C61C726F7600EB26E2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +161,12 @@
 		C1F1973F1C725DF500486DCD /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				C14669441C74D73F00A145AD /* TrafficSimulator */,
 				C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */,
 				C14F57C41C726E6200EB26E2 /* StackScene.swift */,
 				C14F57C21C72681A00EB26E2 /* SwingScene.swift */,
 				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
+				C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */,
 			);
 			name = Demos;
 			sourceTree = "<group>";
@@ -226,11 +275,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F197301C7256FC00486DCD /* ListViewController.swift in Sources */,
+				C146694C1C74DA1F00A145AD /* CarEntity.swift in Sources */,
 				C14F57C31C72681A00EB26E2 /* SwingScene.swift in Sources */,
 				C1F197581C7260FF00486DCD /* SpriteKitSceneViewController.swift in Sources */,
+				C14669461C74D75700A145AD /* TrafficScene.swift in Sources */,
 				C1F197411C725E0E00486DCD /* ThreeDMarblesViewController.swift in Sources */,
 				C1F1972E1C7256FC00486DCD /* AppDelegate.swift in Sources */,
 				C14F57C51C726E6200EB26E2 /* StackScene.swift in Sources */,
+				C146A3711C74B5DE007EB0B6 /* FieldsDemoScene.swift in Sources */,
 				C1F197441C725F7200486DCD /* SCNVector3Extensions.swift in Sources */,
 				C1C749B71C72761A007E6108 /* PaperAirplaneScene.swift in Sources */,
 				C14F57C11C72667500EB26E2 /* CGPointExtension.swift in Sources */,
