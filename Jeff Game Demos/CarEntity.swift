@@ -9,14 +9,27 @@
 import UIKit
 import GameKit
 
-class CarEntity: GKEntity {
+class CarEntity: GKEntity, GKAgentDelegate {
 
   var node:SKShapeNode!
+  var agent:GKAgent2D!
 
   override init() {
     super.init()
 
     setNode()
+    setAgent()
+  }
+
+  func setAgent() {
+    agent = GKAgent2D()
+    agent.delegate = self
+    agent.maxSpeed = 40.0
+    agent.maxAcceleration = 5.0
+    agent.mass = 0.1
+    agent.radius = Float(5.0)
+    agent.position = vector2(Float(self.node.position.x), Float(self.node.position.y))
+    addComponent(agent!)
   }
 
   func setNode() {
@@ -44,7 +57,17 @@ class CarEntity: GKEntity {
     self.node.physicsBody!.allowsRotation = true
     self.node.physicsBody!.friction = 0.0
     self.node.physicsBody!.restitution = 1.0
-    self.node.physicsBody!.velocity = CGVector(dx: 0.0, dy: 50.0)
+  }
+
+  // MARK: GKAgentDelegate methods
+
+  func agentWillUpdate(agent: GKAgent) {
+
+  }
+
+  func agentDidUpdate(agent: GKAgent) {
+    self.node.position = CGPointMake(CGFloat(self.agent.position.x), CGFloat(self.agent.position.y))
+    self.node.zRotation = CGFloat(self.agent.rotation)
   }
 
 }

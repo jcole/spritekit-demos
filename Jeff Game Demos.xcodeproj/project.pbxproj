@@ -72,42 +72,10 @@
 		C14669441C74D73F00A145AD /* TrafficSimulator */ = {
 			isa = PBXGroup;
 			children = (
-				C146694A1C74D9EE00A145AD /* Scenes */,
-				C14669491C74D9DC00A145AD /* Components */,
-				C14669481C74D9D700A145AD /* Entities */,
-				C14669471C74D9CF00A145AD /* Behaviors */,
-			);
-			name = TrafficSimulator;
-			sourceTree = "<group>";
-		};
-		C14669471C74D9CF00A145AD /* Behaviors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Behaviors;
-			sourceTree = "<group>";
-		};
-		C14669481C74D9D700A145AD /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Entities;
-			sourceTree = "<group>";
-		};
-		C14669491C74D9DC00A145AD /* Components */ = {
-			isa = PBXGroup;
-			children = (
+				C14669451C74D75700A145AD /* TrafficScene.swift */,
 				C146694B1C74DA1F00A145AD /* CarEntity.swift */,
 			);
-			name = Components;
-			sourceTree = "<group>";
-		};
-		C146694A1C74D9EE00A145AD /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				C14669451C74D75700A145AD /* TrafficScene.swift */,
-			);
-			name = Scenes;
+			name = TrafficSimulator;
 			sourceTree = "<group>";
 		};
 		C14F57C61C726F7600EB26E2 /* Controllers */ = {
