@@ -63,7 +63,7 @@ class TrafficScene: SKScene {
     }
 
     let pathShape = SKShapeNode(points: UnsafeMutablePointer(cgPoints), count: cgPoints.count)
-    pathShape.lineWidth = roadRadius
+    pathShape.lineWidth = 2.0 * roadRadius
     pathShape.strokeColor = UIColor.cyanColor()
     self.addChild(pathShape)
   }
