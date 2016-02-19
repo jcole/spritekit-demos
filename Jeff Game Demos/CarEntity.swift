@@ -33,17 +33,20 @@ class CarEntity: GKEntity, GKAgentDelegate {
   }
 
   func setNode() {
+    let width:CGFloat = 30.0
+    let height:CGFloat = 20.0
+
+    // Arrow facing to right
     var carCGPath:CGPath {
       let bezierPath = UIBezierPath()
-      bezierPath.moveToPoint(CGPointMake(0.0, 0.0))
-      bezierPath.addLineToPoint(CGPointMake(30.0, 0.0))
-      bezierPath.addLineToPoint(CGPointMake(15.0, 40.0))
-      bezierPath.addLineToPoint(CGPointMake(0.0, 0.0))
+      bezierPath.moveToPoint(CGPointMake(-width/2.0, height/2.0))
+      bezierPath.addLineToPoint(CGPointMake(width/2.0, 0.0))
+      bezierPath.addLineToPoint(CGPointMake(-width/2.0, -height/2.0))
       bezierPath.closePath()
       return bezierPath.CGPath
     }
 
-    self.node = SKShapeNode(path: carCGPath)
+    self.node = SKShapeNode(path: carCGPath, centered: true)
     self.node.strokeColor = UIColor.whiteColor()
     self.node.fillColor = UIColor.redColor()
     self.node.lineWidth = 1
