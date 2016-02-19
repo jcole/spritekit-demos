@@ -18,6 +18,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     "Stack Game",
     "Swing",
     "Paper Airplane",
+    "Traffic"
   ]
 
   let demos:[String] = [
@@ -34,6 +35,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
       return PaperAirplaneScene(size: self.view.frame.size)
     case "Fields Demo":
       return FieldsDemoScene(size: self.view.frame.size)
+    case "Traffic":
+      return TrafficScene(size: self.view.frame.size)
     default:
       return nil
     }
