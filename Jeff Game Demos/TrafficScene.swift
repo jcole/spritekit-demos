@@ -24,7 +24,7 @@ class TrafficScene: SKScene {
   var roadRadius:CGFloat = 5.0
 
   // state
-  var lastUpdateTimeInterval: NSTimeInterval = 0
+  var lastUpdateTimeInterval:NSTimeInterval?
 
   // MARK: Lifecycle
 
@@ -115,7 +115,6 @@ class TrafficScene: SKScene {
   }
 
   // MARK: Update per frame
-  var numCycles = 0
   override func update(currentTime: NSTimeInterval) {
     super.update(currentTime)
 
@@ -123,14 +122,16 @@ class TrafficScene: SKScene {
     guard view != nil else { return }
 
     // Calculate the amount of time since update was last called
-    let deltaTime = currentTime - lastUpdateTimeInterval
+    if lastUpdateTimeInterval == nil {
+      lastUpdateTimeInterval = currentTime
+      return
+    }
+
+    let deltaTime = currentTime - lastUpdateTimeInterval!
     lastUpdateTimeInterval = currentTime
 
-    numCycles++
-    if numCycles > 2 {
-      for car in cars {
-        car.updateWithDeltaTime(deltaTime)
-      }
+    for car in cars {
+      car.updateWithDeltaTime(deltaTime)
     }
   }
 
