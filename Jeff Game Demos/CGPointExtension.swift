@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 extension CGPoint {
 
@@ -23,5 +24,9 @@ extension CGPoint {
     let dy = self.y - point.y
     return sqrt(dx * dx + dy * dy);
   }
-  
+
+  init(position:vector_float2) {
+    self.init(x: CGFloat(position.x), y: CGFloat(position.y))
+  }
+
 }

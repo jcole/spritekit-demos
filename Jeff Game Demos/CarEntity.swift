@@ -21,7 +21,7 @@ class CarEntity: GKEntity, GKAgentDelegate {
     setAgent()
   }
 
-  func setAgent() {
+  private func setAgent() {
     agent = GKAgent2D()
     agent.delegate = self
     agent.maxSpeed = 40.0
@@ -32,7 +32,7 @@ class CarEntity: GKEntity, GKAgentDelegate {
     addComponent(agent!)
   }
 
-  func setNode() {
+  private func setNode() {
     let width:CGFloat = 30.0
     let height:CGFloat = 20.0
 
@@ -71,6 +71,27 @@ class CarEntity: GKEntity, GKAgentDelegate {
   func agentDidUpdate(agent: GKAgent) {
     self.node.position = CGPointMake(CGFloat(self.agent.position.x), CGFloat(self.agent.position.y))
     self.node.zRotation = CGFloat(self.agent.rotation)
+  }
+
+  // MARK: Public methods
+
+  func setPosition(position:vector_float2) {
+    node.position = CGPoint(position:position)
+    agent.position = position
+  }
+
+  func setPath(path:GKPath) {
+    let targetSpeedGoal = GKGoal(toReachTargetSpeed: agent.maxSpeed)
+    let followPathGoal = GKGoal(toFollowPath: path, maxPredictionTime: 1.0, forward: true)
+    let stayOnPathGoal = GKGoal(toStayOnPath: path, maxPredictionTime: 1.0)
+
+    let behavior = GKBehavior()
+
+    behavior.setWeight(0.5, forGoal: targetSpeedGoal)
+    behavior.setWeight(1.0, forGoal: followPathGoal)
+    behavior.setWeight(1.0, forGoal: stayOnPathGoal)
+
+    agent.behavior = behavior
   }
 
 }

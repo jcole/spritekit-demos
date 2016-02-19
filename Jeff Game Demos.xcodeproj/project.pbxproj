@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1031C751C7751B9005CD8B4 /* StreetGridGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */; };
+		C1031C771C7751CA005CD8B4 /* StreetGridGraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */; };
 		C14669461C74D75700A145AD /* TrafficScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14669451C74D75700A145AD /* TrafficScene.swift */; };
 		C146694C1C74DA1F00A145AD /* CarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146694B1C74DA1F00A145AD /* CarEntity.swift */; };
 		C146A3711C74B5DE007EB0B6 /* FieldsDemoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraph.swift; sourceTree = "<group>"; };
+		C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraphNode.swift; sourceTree = "<group>"; };
 		C14669451C74D75700A145AD /* TrafficScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficScene.swift; sourceTree = "<group>"; };
 		C146694B1C74DA1F00A145AD /* CarEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarEntity.swift; sourceTree = "<group>"; };
 		C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsDemoScene.swift; sourceTree = "<group>"; };
@@ -72,8 +76,10 @@
 		C14669441C74D73F00A145AD /* TrafficSimulator */ = {
 			isa = PBXGroup;
 			children = (
-				C14669451C74D75700A145AD /* TrafficScene.swift */,
 				C146694B1C74DA1F00A145AD /* CarEntity.swift */,
+				C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */,
+				C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */,
+				C14669451C74D75700A145AD /* TrafficScene.swift */,
 			);
 			name = TrafficSimulator;
 			sourceTree = "<group>";
@@ -243,7 +249,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F197301C7256FC00486DCD /* ListViewController.swift in Sources */,
+				C1031C771C7751CA005CD8B4 /* StreetGridGraphNode.swift in Sources */,
 				C146694C1C74DA1F00A145AD /* CarEntity.swift in Sources */,
+				C1031C751C7751B9005CD8B4 /* StreetGridGraph.swift in Sources */,
 				C14F57C31C72681A00EB26E2 /* SwingScene.swift in Sources */,
 				C1F197581C7260FF00486DCD /* SpriteKitSceneViewController.swift in Sources */,
 				C14669461C74D75700A145AD /* TrafficScene.swift in Sources */,
