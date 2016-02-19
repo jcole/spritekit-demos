@@ -18,7 +18,7 @@ class TrafficScene: SKScene {
 
   // entities
   var streetGraph:GKGridGraph!
-  var car:CarEntity!
+  var cars = [CarEntity]()
 
   // constants
   var roadRadius:CGFloat = 5.0
@@ -40,7 +40,10 @@ class TrafficScene: SKScene {
 
     createStreetGraph()
     drawStreetGrid()
-    addCar()
+
+    let nodes = streetGraph.nodes as! [GKGraphNode2D]
+    addCar(nodes[0], endNode:nodes[4])
+    addCar(nodes[2], endNode:nodes[3])
   }
 
   // Entities
@@ -93,15 +96,13 @@ class TrafficScene: SKScene {
     }
   }
 
-  func addCar() {
-    car = CarEntity()
+  func addCar(startNode:GKGraphNode2D, endNode:GKGraphNode2D) {
+    let car = CarEntity()
     self.addChild(car.node)
+    cars.append(car)
 
     // path for car
-    let nodes = streetGraph.nodes as! [GKGraphNode2D]
-    let startNode = nodes[0]
-    let endNode = nodes[nodes.count - 1]
-    let pathNodes = streetGraph.findPathFromNode(startNode, toNode: endNode)  as! [GKGraphNode2D]
+    let pathNodes = streetGraph.findPathFromNode(startNode, toNode: endNode) as! [GKGraphNode2D]
 
     // position
     car.setPosition(startNode.position)
@@ -127,7 +128,9 @@ class TrafficScene: SKScene {
 
     numCycles++
     if numCycles > 2 {
-      car.updateWithDeltaTime(deltaTime)
+      for car in cars {
+        car.updateWithDeltaTime(deltaTime)
+      }
     }
   }
 
