@@ -17,14 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
 
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
-    var directDemoController:UIViewController?
-    directDemoController = SpriteKitSceneViewController(scene: TrafficScene(size: UIScreen.mainScreen().bounds.size))
-    if directDemoController == nil {
-      window?.rootViewController = UINavigationController(rootViewController: ListViewController())
-    } else {
-      window?.rootViewController = directDemoController
-    }
+    window?.rootViewController = UINavigationController(rootViewController: ListViewController())
+  //  window?.rootViewController = SpriteKitSceneViewController(scene: TrafficScene(size: UIScreen.mainScreen().bounds.size))
     window?.makeKeyAndVisible()
 
     return true

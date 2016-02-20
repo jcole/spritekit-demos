@@ -38,9 +38,10 @@ class SwingScene: SKScene {
     self.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
 
-    self.addChild(createBoxSprite(CGSize(width: 100, height: 20), position:CGPoint(x:100, y:200)))
-    self.addChild(createBoxSprite(CGSize(width: 30, height: 40), position:CGPoint(x:220, y:200)))
-    self.addChild(createBoxSprite(CGSize(width: 200, height: 10), position:CGPoint(x:300, y:300)))
+    self.addChild(createBoxSprite(CGSize(width: 100, height: 80), position:CGPoint(x:0, y:200)))
+    self.addChild(createBoxSprite(CGSize(width: 80, height: 80), position:CGPoint(x:220, y:300)))
+    self.addChild(createBoxSprite(CGSize(width: 200, height: 100), position:CGPoint(x:0, y:450)))
+    self.addChild(createBoxSprite(CGSize(width: 200, height: 100), position:CGPoint(x:400, y:550)))
 
     movingNode = SKShapeNode(circleOfRadius: 40.0)
     movingNode.position = CGPoint(x: 200, y: 40)
