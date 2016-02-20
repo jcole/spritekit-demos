@@ -13,9 +13,12 @@ class CarEntity: GKEntity, GKAgentDelegate {
 
   var node:SKShapeNode!
   var agent:GKAgent2D!
+  var color = UIColor.redColor()
 
-  override init() {
-    super.init()
+  convenience init(color:UIColor) {
+    self.init()
+
+    self.color = color
 
     setNode()
     setAgent()
@@ -47,8 +50,8 @@ class CarEntity: GKEntity, GKAgentDelegate {
     }
 
     self.node = SKShapeNode(path: carCGPath, centered: true)
-    self.node.strokeColor = UIColor.whiteColor()
-    self.node.fillColor = UIColor.redColor()
+    self.node.strokeColor = UIColor.blackColor()
+    self.node.fillColor = self.color
     self.node.lineWidth = 1
 
     self.node.physicsBody = SKPhysicsBody(polygonFromPath: carCGPath)
@@ -80,18 +83,28 @@ class CarEntity: GKEntity, GKAgentDelegate {
     agent.position = position
   }
 
-  func setPath(path:GKPath) {
+  func start(startPosition:vector_float2, path:GKPath, allCars:[CarEntity]) {
+    setPosition(startPosition)
+
+    var agents = [GKAgent]()
+    for car in allCars {
+      if car != self {
+        agents.append(car.agent)
+      }
+    }
+
     let targetSpeedGoal = GKGoal(toReachTargetSpeed: agent.maxSpeed)
     let followPathGoal = GKGoal(toFollowPath: path, maxPredictionTime: 1.0, forward: true)
     let stayOnPathGoal = GKGoal(toStayOnPath: path, maxPredictionTime: 1.0)
+    let separationGoal = GKGoal(toAvoidAgents: agents, maxPredictionTime: 2.0)
 
     let behavior = GKBehavior()
 
-    behavior.setWeight(0.5, forGoal: targetSpeedGoal)
-    behavior.setWeight(1.0, forGoal: followPathGoal)
-    behavior.setWeight(1.0, forGoal: stayOnPathGoal)
+    behavior.setWeight(0.1, forGoal: targetSpeedGoal)
+    behavior.setWeight(0.2, forGoal: followPathGoal)
+    behavior.setWeight(0.2, forGoal: stayOnPathGoal)
+    behavior.setWeight(1.0, forGoal: separationGoal)
 
     agent.behavior = behavior
   }
-
 }

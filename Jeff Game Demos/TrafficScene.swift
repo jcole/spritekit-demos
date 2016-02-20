@@ -21,7 +21,7 @@ class TrafficScene: SKScene {
   var cars = [CarEntity]()
 
   // constants
-  var roadRadius:CGFloat = 5.0
+  var roadRadius:CGFloat = 20.0
 
   // state
   var lastUpdateTimeInterval:NSTimeInterval?
@@ -40,13 +40,39 @@ class TrafficScene: SKScene {
 
     createStreetGraph()
     drawStreetGrid()
-
-    let nodes = streetGraph.nodes as! [GKGraphNode2D]
-    addCar(nodes[0], endNode:nodes[4])
-    addCar(nodes[2], endNode:nodes[3])
+    setupCars()
   }
 
   // Entities
+
+  func setupCars() {
+    let nodes = streetGraph.nodes as! [GKGraphNode2D]
+
+    cars.append(CarEntity(color: UIColor.redColor()))
+    cars.append(CarEntity(color: UIColor.blueColor()))
+    cars.append(CarEntity(color: UIColor.greenColor()))
+    cars.append(CarEntity(color: UIColor.purpleColor()))
+
+    for car in cars {
+      self.addChild(car.node)
+    }
+
+    startCar(cars[0], startNode:nodes[0], endNode:nodes[4])
+    startCar(cars[1], startNode:nodes[2], endNode:nodes[3])
+    startCar(cars[2], startNode:nodes[4], endNode:nodes[2])
+    startCar(cars[3], startNode:nodes[3], endNode:nodes[0])
+  }
+
+  func startCar(car:CarEntity, startNode:GKGraphNode2D, endNode:GKGraphNode2D) {
+    // path for car
+    let pathNodes = streetGraph.findPathFromNode(startNode, toNode: endNode) as! [GKGraphNode2D]
+
+    // add behavior
+    if !pathNodes.isEmpty {
+      let path = GKPath(graphNodes: pathNodes, radius: Float(roadRadius))
+      car.start(startNode.position, path:path, allCars:cars)
+    }
+  }
 
   func createStreetGraph() {
     let nodes = [
@@ -59,7 +85,7 @@ class TrafficScene: SKScene {
       StreetGridGraphNode(point: vector2(200.0, 400.0))
     ]
 
-    nodes[0].addConnectionsToNodes([nodes[1]], bidirectional: true)
+    nodes[0].addConnectionsToNodes([nodes[1], nodes[3]], bidirectional: true)
     nodes[1].addConnectionsToNodes([nodes[2], nodes[3]], bidirectional: true)
     nodes[4].addConnectionsToNodes([nodes[1]], bidirectional: true)
 
@@ -79,38 +105,20 @@ class TrafficScene: SKScene {
 
           let line = SKShapeNode()
           line.path = path
-          line.strokeColor = UIColor.yellowColor()
-          line.lineWidth = 1
+          line.strokeColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.1)
+          line.lineWidth = roadRadius * 2.0
           
           self.addChild(line)
         }
 
         // add circles
-        let circle = SKShapeNode(circleOfRadius: roadRadius)
+        let circle = SKShapeNode(circleOfRadius: 5.0)
         circle.position = CGPoint(position:node.position)
         circle.lineWidth = 1.0
         circle.strokeColor = UIColor.blueColor()
         circle.fillColor = UIColor.cyanColor()
         self.addChild(circle)
       }
-    }
-  }
-
-  func addCar(startNode:GKGraphNode2D, endNode:GKGraphNode2D) {
-    let car = CarEntity()
-    self.addChild(car.node)
-    cars.append(car)
-
-    // path for car
-    let pathNodes = streetGraph.findPathFromNode(startNode, toNode: endNode) as! [GKGraphNode2D]
-
-    // position
-    car.setPosition(startNode.position)
-
-    // add behavior
-    if !pathNodes.isEmpty {
-      let path = GKPath(graphNodes: pathNodes, radius: Float(roadRadius))
-      car.setPath(path)
     }
   }
 
