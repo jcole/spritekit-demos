@@ -60,6 +60,10 @@ class StackScene: SKScene {
   }
 
   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    //TODO: Check for all touches.
+    //  1) If multiple on different objects, move both objects
+    //  2) If multiple on same object, rotate object (calc angle from touch positions)
+
     if let touch = touches.first {
       let positionInScene = touch.locationInNode(self)
 
