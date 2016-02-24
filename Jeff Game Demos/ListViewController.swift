@@ -16,19 +16,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   let games:[String] = [
     "Stack Game",
     "Paper Airplane",
+    "Swinging",
     "Traffic"
   ]
 
   let demos:[String] = [
     "3D Marbles",
-    "Swinging",
     "Fields Demo"
   ]
 
   func spriteKitSceneForKey(name:String) -> SKScene? {
     switch name {
     case "Swinging":
-      return SwingScene(size: self.view.frame.size)
+      return SwingScene(fileNamed: "SwingScene")
     case "Stack Game":
       return StackScene(size: self.view.frame.size)
     case "Paper Airplane":

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C1031C751C7751B9005CD8B4 /* StreetGridGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */; };
 		C1031C771C7751CA005CD8B4 /* StreetGridGraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */; };
+		C141280F1C7E255500FC32D4 /* SwingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C141280E1C7E255500FC32D4 /* SwingScene.sks */; };
+		C1422DA81C7E7651002D153C /* forest-jungle-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C1422DA71C7E7651002D153C /* forest-jungle-background.png */; };
+		C1422DAA1C7E76CE002D153C /* bowling-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C1422DA91C7E76CE002D153C /* bowling-ball.png */; };
 		C14669461C74D75700A145AD /* TrafficScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14669451C74D75700A145AD /* TrafficScene.swift */; };
 		C146694C1C74DA1F00A145AD /* CarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146694B1C74DA1F00A145AD /* CarEntity.swift */; };
 		C146A3711C74B5DE007EB0B6 /* FieldsDemoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */; };
@@ -36,6 +39,9 @@
 /* Begin PBXFileReference section */
 		C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraph.swift; sourceTree = "<group>"; };
 		C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraphNode.swift; sourceTree = "<group>"; };
+		C141280E1C7E255500FC32D4 /* SwingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SwingScene.sks; sourceTree = "<group>"; };
+		C1422DA71C7E7651002D153C /* forest-jungle-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest-jungle-background.png"; sourceTree = "<group>"; };
+		C1422DA91C7E76CE002D153C /* bowling-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bowling-ball.png"; sourceTree = "<group>"; };
 		C14669451C74D75700A145AD /* TrafficScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficScene.swift; sourceTree = "<group>"; };
 		C146694B1C74DA1F00A145AD /* CarEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarEntity.swift; sourceTree = "<group>"; };
 		C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldsDemoScene.swift; sourceTree = "<group>"; };
@@ -73,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C14128101C7E2EAC00FC32D4 /* Swing */ = {
+			isa = PBXGroup;
+			children = (
+				C141280E1C7E255500FC32D4 /* SwingScene.sks */,
+				C14F57C21C72681A00EB26E2 /* SwingScene.swift */,
+			);
+			name = Swing;
+			sourceTree = "<group>";
+		};
 		C14669441C74D73F00A145AD /* TrafficSimulator */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,10 +150,10 @@
 		C1F1973F1C725DF500486DCD /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				C14128101C7E2EAC00FC32D4 /* Swing */,
 				C14669441C74D73F00A145AD /* TrafficSimulator */,
 				C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */,
 				C14F57C41C726E6200EB26E2 /* StackScene.swift */,
-				C14F57C21C72681A00EB26E2 /* SwingScene.swift */,
 				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
 				C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */,
 			);
@@ -159,8 +174,10 @@
 			children = (
 				C1F197341C7256FC00486DCD /* Assets.xcassets */,
 				C1F197491C7260A100486DCD /* banana.png */,
+				C1422DA91C7E76CE002D153C /* bowling-ball.png */,
 				C1F1974A1C7260A100486DCD /* box.png */,
 				C1F1974B1C7260A100486DCD /* circle.png */,
+				C1422DA71C7E7651002D153C /* forest-jungle-background.png */,
 				C1F1974C1C7260A100486DCD /* letter-l.png */,
 				C1F1974D1C7260A100486DCD /* sand.png */,
 				C1F1974E1C7260A100486DCD /* square.png */,
@@ -229,15 +246,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F197381C7256FC00486DCD /* LaunchScreen.storyboard in Resources */,
+				C141280F1C7E255500FC32D4 /* SwingScene.sks in Resources */,
 				C1F197561C7260A100486DCD /* triangle.png in Resources */,
 				C1F197551C7260A100486DCD /* square.png in Resources */,
 				C1F197541C7260A100486DCD /* sand.png in Resources */,
+				C1422DA81C7E7651002D153C /* forest-jungle-background.png in Resources */,
 				C1F197351C7256FC00486DCD /* Assets.xcassets in Resources */,
 				C1F197511C7260A100486DCD /* box.png in Resources */,
 				C1F197521C7260A100486DCD /* circle.png in Resources */,
 				C1F197531C7260A100486DCD /* letter-l.png in Resources */,
 				C1F197501C7260A100486DCD /* banana.png in Resources */,
 				C1F197331C7256FC00486DCD /* Main.storyboard in Resources */,
+				C1422DAA1C7E76CE002D153C /* bowling-ball.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,40 +20,17 @@ class SwingScene: SKScene {
   let jointMinLength:CGFloat = 50.0
 
   // bitmasks
-  let movingCategory:UInt32 = 0x1 << 1
-  let staticCategory:UInt32 = 0x1 << 2
-
-  // MARK: Init
-
-  override init(size: CGSize) {
-    super.init(size: size)
-    setup()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-  }
-
-  func setup() {
-    self.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
-    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-
-    self.addChild(createBoxSprite(CGSize(width: 100, height: 80), position:CGPoint(x:0, y:200)))
-    self.addChild(createBoxSprite(CGSize(width: 80, height: 80), position:CGPoint(x:220, y:300)))
-    self.addChild(createBoxSprite(CGSize(width: 200, height: 100), position:CGPoint(x:0, y:450)))
-    self.addChild(createBoxSprite(CGSize(width: 200, height: 100), position:CGPoint(x:400, y:550)))
-
-    movingNode = SKShapeNode(circleOfRadius: 40.0)
-    movingNode.position = CGPoint(x: 200, y: 40)
-    movingNode.physicsBody = SKPhysicsBody(circleOfRadius: 40.0)
-    movingNode.physicsBody?.dynamic = true
-    movingNode.physicsBody!.categoryBitMask = movingCategory
-    movingNode.physicsBody!.collisionBitMask = staticCategory
-    movingNode.physicsBody!.contactTestBitMask = staticCategory
-    self.addChild(movingNode)
-  }
+  let staticCategory:UInt32 = 1
+  let movingCategory:UInt32 = 2
 
   // MARK: Lifecycle
+  
+  override func didMoveToView(view: SKView) {
+    super.didMoveToView(view)
+
+    movingNode = self.childNodeWithName("MovingNode")
+    self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+  }
 
   override func didSimulatePhysics() {
     super.didSimulatePhysics()
@@ -61,23 +38,11 @@ class SwingScene: SKScene {
     updateJointLength()
   }
 
+  //TODO: Draw line showing joint if it exists.
+  //TODO: Losing collision bit masks?
+  //TODO: Draw joint at touch position, not node position?
+  
   // MARK: Drawing methods
-
-  func createBoxSprite(size:CGSize, position:CGPoint) -> SKNode {
-    let shape = SKShapeNode(rectOfSize: size, cornerRadius: 2)
-    shape.strokeColor = SKColor.blueColor()
-    shape.lineWidth = 4
-    shape.position = position
-
-    shape.physicsBody = SKPhysicsBody(rectangleOfSize: size)
-    shape.physicsBody?.dynamic = false
-
-    shape.physicsBody!.categoryBitMask = staticCategory
-    shape.physicsBody!.collisionBitMask = movingCategory
-    shape.physicsBody!.contactTestBitMask = movingCategory
-
-    return shape
-  }
 
   func maxJointLength(nodeA:SKNode, nodeB:SKNode) -> CGFloat {
     return nodeA.position.distance(nodeB.position)
