@@ -34,7 +34,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     case "Stack Game":
       return StackScene(fileNamed: "StackScene")
     case "Paper Airplane":
-      return PaperAirplaneScene(size: self.view.frame.size)
+      return PaperAirplaneScene(fileNamed: "PaperAirplaneScene")
     case "Fields Demo":
       return FieldsDemoScene(size: self.view.frame.size)
     case "Traffic":
