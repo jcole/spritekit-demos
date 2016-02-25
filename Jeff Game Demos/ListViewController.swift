@@ -11,21 +11,23 @@ import SpriteKit
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-  // MARK: Config demos
-
-  let games:[String] = [
-    "Stack Game",
-    "Paper Airplane",
-    "Swinging",
-    "Traffic"
+  // MARK: Setup demos
+  
+  let items:[String:[String]] = [
+    "Tech Demos": [
+      "3D Marbles",
+      "Fields Demo"
+    ],
+    
+    "Games": [
+      "Stack Game",
+      "Paper Airplane",
+      "Swinging",
+      "Traffic"
+    ]
   ]
 
-  let demos:[String] = [
-    "3D Marbles",
-    "Fields Demo"
-  ]
-
-  func spriteKitSceneForKey(name:String) -> SKScene? {
+  func demoForKey(name:String) -> AnyObject? {
     switch name {
     case "Swinging":
       return SwingScene(fileNamed: "SwingScene")
@@ -37,38 +39,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
       return FieldsDemoScene(size: self.view.frame.size)
     case "Traffic":
       return TrafficScene(size: self.view.frame.size)
-    default:
-      return nil
-    }
-  }
-
-  func controllerForKey(name:String) -> UIViewController? {
-    switch name {
     case "3D Marbles":
       return ThreeDMarblesViewController()
     default:
       return nil
     }
-  }
-
-  func titleForIndexPathSection(section:Int) -> String {
-    if section == 0 {
-      return "Games"
-    } else {
-      return "Tech Demos"
-    }
-  }
-
-  func keysForIndexPathSection(section:Int) -> [String] {
-    if section == 0 {
-      return games
-    } else {
-      return demos
-    }
-  }
-
-  func keyNameForIndexPath(indexPath:NSIndexPath) -> String {
-    return keysForIndexPathSection(indexPath.section)[indexPath.row]
   }
 
   // MARK: Lifecycle
@@ -101,15 +76,20 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // MARK: UITableViewDataSource, UITableViewDelegate methods
 
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2
+    return items.count
   }
 
+  func titleForIndexPathSection(section:Int) -> String {
+    return Array(items.keys)[section]
+  }
+  
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return titleForIndexPathSection(section)
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return keysForIndexPathSection(section).count
+    let sectionKey = Array(items.keys)[section]
+    return items[sectionKey]!.count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -117,17 +97,20 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     if cell == nil {
       cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cellIdentifier")
     }
-    cell!.textLabel?.text = keyNameForIndexPath(indexPath)
+    
+    let sectionKey = Array(items.keys)[indexPath.section]
+    cell!.textLabel?.text = items[sectionKey]![indexPath.row]
     return cell!
   }
-
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let keyName = keyNameForIndexPath(indexPath)
-
-    if let scene = spriteKitSceneForKey(keyName) {
+    let cell = tableView.cellForRowAtIndexPath(indexPath)
+    let keyName = cell?.textLabel?.text
+    
+    if let scene = demoForKey(keyName!) as? SKScene {
       let controller = SpriteKitSceneViewController(scene: scene)
       self.navigationController?.pushViewController(controller, animated: true)
-    } else if let controller = controllerForKey(keyName) {
+    } else if let controller = demoForKey(keyName!) as? UIViewController {
       self.navigationController?.pushViewController(controller, animated: true)
     }
   }
