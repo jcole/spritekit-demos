@@ -23,6 +23,11 @@ class StackScene: SKScene {
     super.didMoveToView(view)
 
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+
+    // add rain
+    let rainEmitter = SKEmitterNode(fileNamed: "RainParticles.sks")!
+    rainEmitter.position = CGPoint(x: 320, y: 960)
+    addChild(rainEmitter)
   }
 
   // MARK: Touches
