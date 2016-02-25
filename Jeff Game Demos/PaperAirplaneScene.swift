@@ -11,10 +11,6 @@ import SpriteKit
 
 class PaperAirplaneScene: SKScene {
 
-  // bitmasks
-  let conformsToFieldMask:UInt32 = 1
-  let airplaneMask:UInt32 = 2
-
   // MARK: Lifecycle
   
   override func didMoveToView(view: SKView) {

@@ -14,6 +14,7 @@
 		1F8BB9CC1C7F59B700E5582A /* StackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F8BB9CB1C7F59B700E5582A /* StackScene.sks */; };
 		C1031C751C7751B9005CD8B4 /* StreetGridGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */; };
 		C1031C771C7751CA005CD8B4 /* StreetGridGraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */; };
+		C134A3AB1C7F7E3A0098F5F3 /* junkyard.png in Resources */ = {isa = PBXBuildFile; fileRef = C134A3AA1C7F7E3A0098F5F3 /* junkyard.png */; };
 		C141280F1C7E255500FC32D4 /* SwingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C141280E1C7E255500FC32D4 /* SwingScene.sks */; };
 		C1422DA81C7E7651002D153C /* forest-jungle-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C1422DA71C7E7651002D153C /* forest-jungle-background.png */; };
 		C1422DAA1C7E76CE002D153C /* bowling-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C1422DA91C7E76CE002D153C /* bowling-ball.png */; };
@@ -49,6 +50,7 @@
 		1F8BB9CB1C7F59B700E5582A /* StackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StackScene.sks; sourceTree = "<group>"; };
 		C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraph.swift; sourceTree = "<group>"; };
 		C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraphNode.swift; sourceTree = "<group>"; };
+		C134A3AA1C7F7E3A0098F5F3 /* junkyard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = junkyard.png; sourceTree = "<group>"; };
 		C141280E1C7E255500FC32D4 /* SwingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SwingScene.sks; sourceTree = "<group>"; };
 		C1422DA71C7E7651002D153C /* forest-jungle-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest-jungle-background.png"; sourceTree = "<group>"; };
 		C1422DA91C7E76CE002D153C /* bowling-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bowling-ball.png"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				1F1E03EA1C7F64A100732775 /* fan.png */,
 				1F1E03E81C7F632C00732775 /* floor.png */,
 				C1422DA71C7E7651002D153C /* forest-jungle-background.png */,
+				C134A3AA1C7F7E3A0098F5F3 /* junkyard.png */,
 				C1F1974C1C7260A100486DCD /* letter-l.png */,
 				1F1E03E61C7F629600732775 /* plane.png */,
 				C1F1974D1C7260A100486DCD /* sand.png */,
@@ -308,6 +311,7 @@
 				C1F197531C7260A100486DCD /* letter-l.png in Resources */,
 				1F1E03E71C7F629600732775 /* plane.png in Resources */,
 				C1F197501C7260A100486DCD /* banana.png in Resources */,
+				C134A3AB1C7F7E3A0098F5F3 /* junkyard.png in Resources */,
 				C1F197331C7256FC00486DCD /* Main.storyboard in Resources */,
 				C1422DAA1C7E76CE002D153C /* bowling-ball.png in Resources */,
 			);
