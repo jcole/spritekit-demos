@@ -32,7 +32,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     case "Swinging":
       return SwingScene(fileNamed: "SwingScene")
     case "Stack Game":
-      return StackScene(size: self.view.frame.size)
+      return StackScene(fileNamed: "StackScene")
     case "Paper Airplane":
       return PaperAirplaneScene(size: self.view.frame.size)
     case "Fields Demo":

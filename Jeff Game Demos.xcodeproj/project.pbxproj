@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8BB9CC1C7F59B700E5582A /* StackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F8BB9CB1C7F59B700E5582A /* StackScene.sks */; };
 		C1031C751C7751B9005CD8B4 /* StreetGridGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */; };
 		C1031C771C7751CA005CD8B4 /* StreetGridGraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */; };
 		C141280F1C7E255500FC32D4 /* SwingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C141280E1C7E255500FC32D4 /* SwingScene.sks */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F8BB9CB1C7F59B700E5582A /* StackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StackScene.sks; sourceTree = "<group>"; };
 		C1031C741C7751B9005CD8B4 /* StreetGridGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraph.swift; sourceTree = "<group>"; };
 		C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetGridGraphNode.swift; sourceTree = "<group>"; };
 		C141280E1C7E255500FC32D4 /* SwingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SwingScene.sks; sourceTree = "<group>"; };
@@ -79,6 +81,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F8BB9C71C7F592200E5582A /* Paper Airplane */ = {
+			isa = PBXGroup;
+			children = (
+				C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */,
+			);
+			name = "Paper Airplane";
+			sourceTree = "<group>";
+		};
+		1F8BB9C81C7F593300E5582A /* Stacking */ = {
+			isa = PBXGroup;
+			children = (
+				1F8BB9CB1C7F59B700E5582A /* StackScene.sks */,
+				C14F57C41C726E6200EB26E2 /* StackScene.swift */,
+			);
+			name = Stacking;
+			sourceTree = "<group>";
+		};
+		1F8BB9C91C7F594300E5582A /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */,
+			);
+			name = Fields;
+			sourceTree = "<group>";
+		};
+		1F8BB9CA1C7F594D00E5582A /* Three D Marbles */ = {
+			isa = PBXGroup;
+			children = (
+				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
+			);
+			name = "Three D Marbles";
+			sourceTree = "<group>";
+		};
 		C14128101C7E2EAC00FC32D4 /* Swing */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +123,7 @@
 			name = Swing;
 			sourceTree = "<group>";
 		};
-		C14669441C74D73F00A145AD /* TrafficSimulator */ = {
+		C14669441C74D73F00A145AD /* Traffic Simulator */ = {
 			isa = PBXGroup;
 			children = (
 				C146694B1C74DA1F00A145AD /* CarEntity.swift */,
@@ -96,7 +131,7 @@
 				C1031C761C7751CA005CD8B4 /* StreetGridGraphNode.swift */,
 				C14669451C74D75700A145AD /* TrafficScene.swift */,
 			);
-			name = TrafficSimulator;
+			name = "Traffic Simulator";
 			sourceTree = "<group>";
 		};
 		C14F57C61C726F7600EB26E2 /* Controllers */ = {
@@ -150,12 +185,12 @@
 		C1F1973F1C725DF500486DCD /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				1F8BB9C91C7F594300E5582A /* Fields */,
+				1F8BB9C71C7F592200E5582A /* Paper Airplane */,
+				1F8BB9C81C7F593300E5582A /* Stacking */,
 				C14128101C7E2EAC00FC32D4 /* Swing */,
-				C14669441C74D73F00A145AD /* TrafficSimulator */,
-				C1C749B61C72761A007E6108 /* PaperAirplaneScene.swift */,
-				C14F57C41C726E6200EB26E2 /* StackScene.swift */,
-				C1F197401C725E0E00486DCD /* ThreeDMarblesViewController.swift */,
-				C146A3701C74B5DE007EB0B6 /* FieldsDemoScene.swift */,
+				1F8BB9CA1C7F594D00E5582A /* Three D Marbles */,
+				C14669441C74D73F00A145AD /* Traffic Simulator */,
 			);
 			name = Demos;
 			sourceTree = "<group>";
@@ -254,6 +289,7 @@
 				C1F197351C7256FC00486DCD /* Assets.xcassets in Resources */,
 				C1F197511C7260A100486DCD /* box.png in Resources */,
 				C1F197521C7260A100486DCD /* circle.png in Resources */,
+				1F8BB9CC1C7F59B700E5582A /* StackScene.sks in Resources */,
 				C1F197531C7260A100486DCD /* letter-l.png in Resources */,
 				C1F197501C7260A100486DCD /* banana.png in Resources */,
 				C1F197331C7256FC00486DCD /* Main.storyboard in Resources */,

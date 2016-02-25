@@ -15,43 +15,18 @@ class StackScene: SKScene {
   var selectedEntity:SKNode?
 
   // bitmasks
-  let draggableCategory:UInt32 = 0x1 << 1
+  let draggableCategory:UInt32 = 1
 
   // MARK: Lifecycle
 
-  override init(size: CGSize) {
-    super.init(size: size)
-    setup()
-  }
+  override func didMoveToView(view: SKView) {
+    super.didMoveToView(view)
 
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  func setup() {
-    self.physicsWorld.gravity = CGVector(dx: 0, dy: -4.0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-
-    let images = ["circle", "letter-l", "square", "box"]
-    for (index, image) in images.enumerate() {
-      let sprite = createPhysicsSprite(image)
-      let offset = CGFloat(index + 1) * 0.2
-      sprite.position = CGPoint(x: self.size.width * offset, y: self.size.height * offset)
-      self.addChild(sprite)
-    }
   }
 
-  func createPhysicsSprite(imageName:String) -> SKSpriteNode {
-    let sprite = SKSpriteNode(imageNamed:imageName)
-    sprite.name = imageName
-    sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-    sprite.physicsBody!.categoryBitMask = draggableCategory
-    sprite.physicsBody!.collisionBitMask = draggableCategory
-    sprite.physicsBody!.contactTestBitMask = draggableCategory
-
-    return sprite
-  }
-
+  // MARK: Touches
+  
   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     if selectedEntity != nil {
       selectedEntity!.physicsBody?.affectedByGravity = true
@@ -85,7 +60,7 @@ class StackScene: SKScene {
         }
       }
     }
-
+    
     super.touchesBegan(touches, withEvent:event)
   }
 
