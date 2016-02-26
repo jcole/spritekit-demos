@@ -53,16 +53,6 @@ class CarEntity: GKEntity, GKAgentDelegate {
     self.node.strokeColor = UIColor.blackColor()
     self.node.fillColor = self.color
     self.node.lineWidth = 1
-
-    self.node.physicsBody = SKPhysicsBody(polygonFromPath: carCGPath)
-    self.node.physicsBody?.dynamic = true
-    self.node.physicsBody!.mass = 1.0
-    self.node.physicsBody!.charge = 1.0
-    self.node.physicsBody!.categoryBitMask = TrafficBitMaskCar
-    self.node.physicsBody!.collisionBitMask = (TrafficBitMaskCar | TrafficBitMaskObstacle)
-    self.node.physicsBody!.allowsRotation = true
-    self.node.physicsBody!.friction = 0.0
-    self.node.physicsBody!.restitution = 1.0
   }
 
   // MARK: GKAgentDelegate methods
@@ -72,8 +62,18 @@ class CarEntity: GKEntity, GKAgentDelegate {
   }
 
   func agentDidUpdate(agent: GKAgent) {
-    self.node.position = CGPointMake(CGFloat(self.agent.position.x), CGFloat(self.agent.position.y))
     self.node.zRotation = CGFloat(self.agent.rotation)
+
+//    let offsetDistance:CGFloat = 20.0
+//    let offsetX:CGFloat = sin(self.node.zRotation) * offsetDistance
+//    let offsetY:CGFloat = -1 * cos(self.node.zRotation) * offsetDistance
+
+    let nodePosition = CGPointMake(
+      CGFloat(self.agent.position.x),
+      CGFloat(self.agent.position.y)
+    )
+
+    self.node.position = nodePosition
   }
 
   // MARK: Public methods
@@ -94,16 +94,19 @@ class CarEntity: GKEntity, GKAgentDelegate {
     }
 
     let targetSpeedGoal = GKGoal(toReachTargetSpeed: agent.maxSpeed)
+
+    // The "follow path" goal tries to keep the agent facing in a forward direction
+    // when it is on this path.
     let followPathGoal = GKGoal(toFollowPath: path, maxPredictionTime: 1.0, forward: true)
+
+    // The "stay on path" goal tries to keep the agent on the path within the path's radius.
     let stayOnPathGoal = GKGoal(toStayOnPath: path, maxPredictionTime: 1.0)
-    let separationGoal = GKGoal(toAvoidAgents: agents, maxPredictionTime: 2.0)
 
     let behavior = GKBehavior()
 
     behavior.setWeight(0.1, forGoal: targetSpeedGoal)
-    behavior.setWeight(0.2, forGoal: followPathGoal)
-    behavior.setWeight(0.2, forGoal: stayOnPathGoal)
-    behavior.setWeight(1.0, forGoal: separationGoal)
+    behavior.setWeight(1.0, forGoal: followPathGoal)
+    behavior.setWeight(1.0, forGoal: stayOnPathGoal)
 
     agent.behavior = behavior
   }

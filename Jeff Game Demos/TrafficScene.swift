@@ -10,10 +10,6 @@ import UIKit
 import SpriteKit
 import GameKit
 
-// bitmasks
-let TrafficBitMaskObstacle:UInt32 = 0x1 << 1
-let TrafficBitMaskCar:UInt32 = 0x1 << 2
-
 class TrafficScene: SKScene {
 
   // entities
@@ -34,8 +30,6 @@ class TrafficScene: SKScene {
   }
 
   func setup() {
-    self.physicsWorld.gravity = CGVectorMake(0, 0)
-
     self.backgroundColor = UIColor.whiteColor()
 
     createStreetGraph()
@@ -106,7 +100,8 @@ class TrafficScene: SKScene {
           let line = SKShapeNode()
           line.path = path
           line.strokeColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.1)
-          line.lineWidth = roadRadius * 2.0
+          line.fillColor = UIColor.whiteColor()
+          line.lineWidth = 2.0//roadRadius * 1.0
           
           self.addChild(line)
         }
