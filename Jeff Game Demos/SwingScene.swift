@@ -21,7 +21,6 @@ class SwingScene: SKScene {
 
   // bitmasks
   let staticCategory:UInt32 = 1
-  let movingCategory:UInt32 = 2
 
   // MARK: Lifecycle
   
