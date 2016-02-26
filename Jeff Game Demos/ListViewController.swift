@@ -13,29 +13,29 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
   // MARK: Setup demos
   
-  let items:[String:[String]] = [
-    "Tech Demos": [
+  let items = [
+    ["Games", [
+      "Build a House",
+      ]],
+
+    ["Demos", [
       "3D Marbles",
-      "Fields Demo"
-    ],
-    
-    "Games": [
-      "Stack Game",
+      "Fields",
       "Paper Airplane",
       "Swinging",
       "Traffic"
-    ]
+    ]]
   ]
 
   func demoForKey(name:String) -> AnyObject? {
     switch name {
     case "Swinging":
       return SwingScene(fileNamed: "SwingScene")
-    case "Stack Game":
+    case "Build a House":
       return StackScene(fileNamed: "StackScene")
     case "Paper Airplane":
       return PaperAirplaneScene(fileNamed: "PaperAirplaneScene")
-    case "Fields Demo":
+    case "Fields":
       return FieldsDemoScene(size: self.view.frame.size)
     case "Traffic":
       return TrafficScene(size: self.view.frame.size)
@@ -44,6 +44,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     default:
       return nil
     }
+  }
+
+  func sectionName(section:Int) -> String {
+    return items[section][0] as! String
+  }
+
+  func demoName(indexPath:NSIndexPath) -> String {
+    return (items[indexPath.section][1] as! [String])[indexPath.row]
   }
 
   // MARK: Lifecycle
@@ -80,7 +88,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   }
 
   func titleForIndexPathSection(section:Int) -> String {
-    return Array(items.keys)[section]
+    return sectionName(section)
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -88,8 +96,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let sectionKey = Array(items.keys)[section]
-    return items[sectionKey]!.count
+    return items[section][1].count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -98,19 +105,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
       cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cellIdentifier")
     }
     
-    let sectionKey = Array(items.keys)[indexPath.section]
-    cell!.textLabel?.text = items[sectionKey]![indexPath.row]
+    cell!.textLabel?.text = demoName(indexPath)
     return cell!
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let cell = tableView.cellForRowAtIndexPath(indexPath)
-    let keyName = cell?.textLabel?.text
+    let keyName = demoName(indexPath)
     
-    if let scene = demoForKey(keyName!) as? SKScene {
+    if let scene = demoForKey(keyName) as? SKScene {
       let controller = SpriteKitSceneViewController(scene: scene)
       self.navigationController?.pushViewController(controller, animated: true)
-    } else if let controller = demoForKey(keyName!) as? UIViewController {
+    } else if let controller = demoForKey(keyName) as? UIViewController {
       self.navigationController?.pushViewController(controller, animated: true)
     }
   }
